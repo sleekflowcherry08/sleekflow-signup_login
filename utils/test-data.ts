@@ -18,6 +18,11 @@ export interface SignupCase {
   password?: string;
   expected: Expected;
   errorId?: string;
+  companyName?: string;
+  companyWebsite?: string;
+  personalName?: string;
+  phone?: string;
+
 }
 
 // Data files live in test-data/. Add a new object there and a new test appears automatically.
