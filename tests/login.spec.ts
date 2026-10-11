@@ -18,7 +18,7 @@ for (const c of cases) {
     if (await login.isPasswordStepVisible()) {
       if (c.expected === 'success') {
       await login.submitPassword(password);
-      await expect(page).toHaveURL(/^https:\/\/app\.sleekflow\.io\/en\/onboarding\/shared-inbox-checklist/, { timeout: 30_000 });
+      await expect(page).toHaveURL(/^https:\/\/app\.sleekflow\.io\/en\/inbox\?screen_hint=login/, { timeout: 30_000 });
       return;
     }
       const outcome = await login.waitForErrorOrCaptcha();
