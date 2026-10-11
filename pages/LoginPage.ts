@@ -4,7 +4,7 @@ export class LoginPage {
   readonly page: Page;
   readonly identifierInput: Locator;
   readonly passwordInput: Locator;
-  readonly actionButton: Locator;
+  readonly continueButton: Locator;
   readonly signupLink: Locator;
   readonly error: Locator;
   readonly captcha: Locator;
@@ -13,7 +13,7 @@ export class LoginPage {
     this.page = page;
     this.identifierInput = page.getByRole('textbox',{name:'username'});
     this.passwordInput = page.getByRole('textbox',{name:'password'});
-    this.actionButton = page.getByRole('button',{name: 'Continue', exact: true});
+    this.continueButton = page.getByRole('button',{name: 'Continue', exact: true});
     this.signupLink = page.locator('a[href*="/u/signup/identifier"]');
     this.error = page.locator('[id^="error-element"]:visible').first();
     this.captcha = page.locator('[id*="captcha" i]:visible, img[alt*="captcha" i]').first();
@@ -27,12 +27,12 @@ export class LoginPage {
 
   async submitIdentifier(email: string): Promise<void> {
     await this.identifierInput.fill(email);
-    await this.actionButton.click();
+    await this.continueButton.click();
   }
 
   async submitPassword(password: string): Promise<void> {
     await this.passwordInput.fill(password);
-    await this.actionButton.click();
+    await this.continueButton.click();
   }
 
   async isPasswordStepVisible(timeout = 5_000): Promise<boolean> {
