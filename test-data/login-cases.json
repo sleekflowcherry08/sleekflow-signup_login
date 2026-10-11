@@ -1,0 +1,36 @@
+[
+  {
+    "name": "valid user - success",
+    "email": "$E2E_USER_EMAIL",
+    "password": "$E2E_USER_PASSWORD",
+    "expected": "success"
+  },
+  {
+    "name": "valid email + wrong password",
+    "email": "$E2E_USER_EMAIL",
+    "password": "DefinitelyWrong!123",
+    "expected": "error",
+    "errorCode": "wrong-credentials"
+  },
+  {
+    "name": "unknown user",
+    "email": "e2e-unknown-user@example.com",
+    "password": "Whatever!123",
+    "expected": "error",
+    "errorCode": "wrong-credentials"
+  },
+  {
+    "name": "invalid email format",
+    "email": "not-an-email",
+    "password": "Whatever!123",
+    "expected": "error",
+    "errorCode": "wrong-credentials"
+  },
+  {
+    "name": "empty email",
+    "email": " ",
+    "password": "Whatever!123",
+    "expected": "error",
+    "errorCode": "invalid-email-username"
+  }
+]
