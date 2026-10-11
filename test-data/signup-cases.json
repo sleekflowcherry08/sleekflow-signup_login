@@ -14,6 +14,14 @@
     "errorId": "error-cs-password-password-too-weak"
   },
   {
+    "name": "Empty email",
+    "email": " ",
+    "acceptTerms": true,
+    "password": "",
+    "expected": "error",
+    "errorId": "error-cs-email-invalid"
+  },
+  {
     "name": "new user - success",
     "email": "$E2E_SIGNUP_EMAIL",
     "acceptTerms": true,

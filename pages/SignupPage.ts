@@ -8,6 +8,8 @@ export class SignupPage {
   readonly passwordInput: Locator;
   readonly actionButton: Locator;
   readonly loginPage: LoginPage;
+  //readonly error: Locator;
+  readonly captcha: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +17,8 @@ export class SignupPage {
     this.termsCheckbox = page.locator('#terms-of-service');
     this.passwordInput = page.getByRole('textbox',{name:'password'});
     this.actionButton = page.getByRole('button',{name: 'Sign up', exact: true});
+    //this.error = page.locator('[id^="error"]:visible').first();
+    this.captcha = page.locator('[id*="captcha" i]:visible, img[alt*="captcha" i]').first();
     this.loginPage = new LoginPage(page);
   }
 
@@ -41,4 +45,18 @@ export class SignupPage {
   error(id: string): Locator {
     return this.page.locator(`#${id}`);
   }
+
+//   async waitForErrorOrCaptcha(timeout = 15_000): Promise<'error' | 'captcha'> {
+//     const showedError = await this.error
+//       .waitFor({ state: 'visible', timeout })
+//       .then(() => true)
+//       .catch(() => false);
+
+//     if (showedError && (await this.error.getAttribute('data-error-code')) !== 'invalid-captcha') {
+//       return 'error';
+//     }
+
+//     await this.captcha.waitFor({ state: 'visible', timeout: 15_000 });
+//     return 'captcha';
+//   }
 }

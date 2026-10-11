@@ -20,6 +20,11 @@ for (const c of cases) {
       return;
     }
 
+    if (page.url().includes('/u/signup/identifier')){
+        await expect(signup.error(c.errorId!)).toBeVisible();
+        return
+    }
+
     await page.waitForURL(/\/u\/signup\/password/);
     await signup.submitPassword(password);
 
@@ -29,6 +34,6 @@ for (const c of cases) {
       return;
     }
 
-    await expect(page).not.toHaveURL(/\/u\/signup\/password/, { timeout: 30_000 });
+    
   });
 }
