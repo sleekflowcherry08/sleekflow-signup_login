@@ -21,6 +21,7 @@ for (const c of cases) {
       await expect(page).toHaveURL(/^https:\/\/app\.sleekflow\.io\/en\/inbox\?screen_hint=login/, { timeout: 30_000 });
       return;
     }
+      await login.submitPassword(password);
       const outcome = await login.waitForErrorOrCaptcha();
       if (outcome === 'captcha') {
         test.info().annotations.push({ type: 'warning', description: 'Auth0 CAPTCHA challenge shown to this IP; error-code assertion skipped' });
@@ -29,6 +30,7 @@ for (const c of cases) {
 
       if (c.errorCode) {
         await expect(login.error).toHaveAttribute('data-error-code', c.errorCode);
+        return;
       }
     }
 
