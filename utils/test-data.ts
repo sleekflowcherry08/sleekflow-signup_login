@@ -18,10 +18,10 @@ export interface SignupCase {
   password?: string;
   expected: Expected;
   errorId?: string;
-  companyName?: string;
-  companyWebsite?: string;
-  personalName?: string;
-  phone?: string;
+  companyName: string;
+  companyWebsite: string;
+  personalName: string;
+  phone: string;
 
 }
 

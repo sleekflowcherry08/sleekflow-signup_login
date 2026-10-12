@@ -1,5 +1,38 @@
 [
-
+  {
+    "name": "terms not accepted - blocked",
+    "email": "e2e-signup-terms@example.com",
+    "acceptTerms": false,
+    "expected": "blocked",
+    "companyName": "test company",
+    "companyWebsite": "https://test.io",
+    "personalName": "owner",
+    "phone": "85292897879"
+  },
+  {
+    "name": "weak password rejected",
+    "email": "e2e-signup-weak@example.com",
+    "acceptTerms": true,
+    "password": "123",
+    "expected": "error",
+    "errorId": "error-cs-password-password-too-weak",
+    "companyName": "test company",
+    "companyWebsite": "https://test.io",
+    "personalName": "owner",
+    "phone": "85292897879"
+  },
+  {
+    "name": "Empty email",
+    "email": " ",
+    "acceptTerms": true,
+    "password": "",
+    "expected": "error",
+    "errorId": "error-cs-email-invalid",
+    "companyName": "test company",
+    "companyWebsite": "https://test.io",
+    "personalName": "owner",
+    "phone": "85292897879"
+  },
   {
     "name": "new user - success",
     "email": "$E2E_SIGNUP_EMAIL",
