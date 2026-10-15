@@ -28,14 +28,17 @@ for (const c of cases) {
       return;
     }
 
-    await page.waitForURL(/\/u\/signup\/password/);
-    await signup.submitPassword(password);
 
     if (c.expected === 'error') {
       await expect(signup.error(c.errorId!)).toBeVisible();
       await expect(page).toHaveURL(/\/u\/signup\/password/);
       return;
     }
+    
+    await page.waitForURL(/\/u\/signup\/password/);
+    await signup.submitPassword(password);
+
+  
 
     const code = await getLatestOtpCode();
     await signup.submitVerificationCode(code);
